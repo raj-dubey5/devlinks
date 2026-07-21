@@ -27,9 +27,8 @@ const registerUser = async (req, res) => {
       message: "User registered successfully",
     });
   } catch (err) {
-    return res.status(500).json({
-      message: err.message,
-    });
+    console.error(err);
+    res.status(500).json({ message: "Something went wrong. Please try again." });
   }
 };
 
@@ -73,10 +72,9 @@ const loginUser = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({
-      message: err.message,
-    });
-  }
+  console.error(err);
+  res.status(500).json({ message: "Something went wrong. Please try again." });
+}
 };
 
 const updateProfile = async (req, res) => {
@@ -117,10 +115,9 @@ const updateProfile = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({
-      message: err.message,
-    });
-  }
+  console.error(err);
+  res.status(500).json({ message: "Something went wrong. Please try again." });
+}
 };
 
 module.exports = {

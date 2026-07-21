@@ -12,8 +12,9 @@ const addLink = async (req, res) => {
         });
         res.status(201).json(link);
     } catch (err) {
-        res.status(500).json({ message: err.message })
-    }
+  console.error(err);
+  res.status(500).json({ message: "Something went wrong. Please try again." });
+}
 }
 
 
@@ -24,8 +25,9 @@ const getLinks = async (req, res) => {
         });
         res.status(200).json(link);
     } catch (err) {
-        res.status(500).json({ message: err.message })
-    }
+  console.error(err);
+  res.status(500).json({ message: "Something went wrong. Please try again." });
+}
 }
 
 const updateLink = async (req, res) => {
@@ -53,11 +55,10 @@ const updateLink = async (req, res) => {
     await link.save();
 
     res.status(200).json(link);
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
+  } catch (err) {
+  console.error(err);
+  res.status(500).json({ message: "Something went wrong. Please try again." });
+}
 };
 
 const deleteLink = async (req, res) => {
