@@ -7,8 +7,15 @@ const linkRoutes = require("./routes/linkRoutes")
 const profileRoutes = require("./routes/profileRoutes");
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://devlinks-raj.vercel.app",
+];
 
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins,
+}));
+
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/links", linkRoutes);
